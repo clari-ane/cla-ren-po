@@ -2,58 +2,52 @@
     ViewBag.Title = "O Jogo";
 }
 
-    <div class="jumbotron">
-        <h2>O Jogo</h2>
-        <p class="lead">Prontos para jogar? Informe o nome e a jogada de cada um dos jogadores:</p><br />
+<div class="jumbotron">
 
-        <form id="FormJogoClarenpo">
-            <div class="row">
-                <div class="col">
-                    <input type="text" min="1" maxlength="20" required class="SomenteLetras" id="idJogador1" placeholder="Nome do Jogador 1" />
-                </div>
+    <h2>O Jogo</h2>
+    <p class="lead">Prontos para jogar? Informe o nome e a jogada de cada um dos jogadores:</p><br />
+    <form id="FormJogoClarenpo">
 
-                <div class="col">
-                    <input type="text" min="1" maxlength="1" required class="SomenteLetras" id="idMovimento1" placeholder="Pedra (R), Papel (P) ou Tesoura (S)" />
-                </div>
+        <div class="form-row">
+            <div class="col-4">
+                <input type="text" min="1" maxlength="20" required class="form-control SomenteLetras" id="idJogador1" placeholder="Nome do Jogador 1" />
             </div>
-            <div class="form-row">
-                <div>
-
-                </div>
+            <div class="col-4">
+                <input type="text" min="1" maxlength="1" required class=" form-control SomenteLetras" id="idMovimento1" placeholder="Pedra (R), Papel (P) ou Tesoura (S)" />
             </div>
-            <div class="form-row">
-                <div>
-                    <input type="text" min="1" maxlength="20" required class="form-control" id="idJogador2" placeholder="Nome do Jogador 2" />
-                </div>
-
-                <div>
-                    <input type="text" min="1" maxlength="1" required class="form-control" id="idMovimento2" placeholder="Pedra (R), Papel (P) ou Tesoura (S)" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div>
-                    <button type="submit" class="btn btn-primary mb-2" onclick="rps_game_winner()">Jogar</button>
-                </div>
-            </div>
-        </form><br />
-        <div class="row">
-            <p>E o ganhador é:&nbsp;</p> <span id="idGanhador"></span>
         </div>
+        <br />
+        <div class="form-row mt-10">
+            <div class="col-4">
+                <input type="text" min="1" maxlength="20" required class="form-control" id="idJogador2" placeholder="Nome do Jogador 2" />
+            </div>
+            <div class="col-4">
+                <input type="text" min="1" maxlength="1" required class="form-control" id="idMovimento2" placeholder="Pedra (R), Papel (P) ou Tesoura (S)" />
+            </div>
+        </div>
+        <br />
+        <div class="form-row">
+            <div>
+                <button type="submit" class="btn btn-primary mb-2" onclick="rps_game_winner()">Jogar</button>
+            </div>
+        </div>
+    </form><br />
+    <div class="row">
+        <p>E o ganhador é:&nbsp;</p> <span id="idGanhador"></span>
+    </div>
+    @section MeusCodigosJavaScript{
+        <script type="text/javascript">
 
-        @section MeusCodigosJavaScript{
-
-            <script type="text/javascript">
-
-                $(document).ready(function () {
-                    /*desabilita o submit do form para uso de AJAX*/
-                    $("#FormJogoClarenpo").submit(function () {
-                        return false;
-                    });
-
+            $(document).ready(function () {
+                /*desabilita o submit do form para uso de AJAX*/
+                $("#FormJogoClarenpo").submit(function () {
+                    return false;
                 });
 
-                $('.SomenteLetras').keyup(function () { this.value = this.value.replace(/[^a-zA-Z.]/g, ''); });
+            });
 
-            </script>
-        }
-    </div>
+            $('.SomenteLetras').keyup(function () { this.value = this.value.replace(/[^a-zA-Z.]/g, ''); });
+
+        </script>
+    }
+</div>
