@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "O Jogo";
+}
+
+<div>
+    <h2>OJogo</h2>
+</div>
+
+
+
+
+
+
+<div class="jumbotron">
+    <h1>Somar</h1>
+    <p class="lead">Neste Exemplo vamos somar dois valores.</p><br />
+
+    <form id="FormRealizaSoma">
+        <div class="form-row">
+            <div class="col-2">
+                <input type="number" min="0" required class="form-control" id="idNumero1" placeholder="Nº 1">
+            </div>
+            <div class="col-1 cls-sinal-mais">+</div>
+
+            <div class="col-2">
+                <input type="number" min="0" required class="form-control" id="idNumero2" placeholder="Nº 2">
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2" onclick="RealizaCalculo()">Resultado</button>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <p>Resultado é:&nbsp;</p> <span id="idResultado"></span>
+        </div>
+    </form>
+
+</div>
+
