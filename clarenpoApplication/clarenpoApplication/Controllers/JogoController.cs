@@ -14,6 +14,11 @@ namespace clarenpoApplication.Controllers
             return View();
         }
 
+        public ActionResult OJogo()
+        {
+            return View();
+        }
+
         public ActionResult Torneio()
         {
             return View();

@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cla-ren-pôô - @ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/CSS/Site.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-expand navbar-inverse bg-dark mb-4 navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,16 +21,17 @@
                 @Html.ActionLink("Cla-ren-pôô", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav mr-auto">
                     <!--<li>@Html.ActionLink("Página Inicial", "Index", "Home")</li>-->
-                    <li>@Html.ActionLink("Regras", "Regras", "Jogo")</li>
-                    <li>@Html.ActionLink("O Jogo", "Jogo", "Jogo")</li>
-                    <li>@Html.ActionLink("Torneio", "Torneio", "Jogo")</li>
+                    <li class="nav-item">@Html.ActionLink("Regras", "Regras", "Jogo")</li>
+                    <li class="nav-item">@Html.ActionLink("O Jogo", "OJogo", "Jogo")</li>
+                    <li class="nav-item">@Html.ActionLink("Torneio", "Torneio", "Jogo")</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+
+    <div class="container">
         @RenderBody()
         <hr />
         <footer>
@@ -36,8 +39,16 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Content/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Scripts/bootstrap.js"></script>
+    <script src="~/Content/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Content/JavaScript/Util.js"></script>
+    <script>
+        var vBase = '@Url.Content("~")';
+        var vPath = '@Url.Content("~")';
+    </script>
     @RenderSection("scripts", required: false)
+    @RenderSection("MeusCodigosJavaScript", false)
 </body>
 </html>
