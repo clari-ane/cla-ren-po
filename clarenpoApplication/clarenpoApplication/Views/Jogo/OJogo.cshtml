@@ -19,10 +19,10 @@
         <br />
         <div class="form-row mt-10">
             <div class="col-4">
-                <input type="text" min="1" maxlength="20" required class="form-control" id="idJogador2" placeholder="Nome do Jogador 2" />
+                <input type="text" min="1" maxlength="20" required class="form-control SomenteLetras" id="idJogador2" placeholder="Nome do Jogador 2" />
             </div>
             <div class="col-4">
-                <input type="text" min="1" maxlength="1" required class="form-control" id="idMovimento2" placeholder="Pedra (R), Papel (P) ou Tesoura (S)" />
+                <input type="text" min="1" maxlength="1" required class="form-control SomenteLetras" id="idMovimento2" placeholder="Pedra (R), Papel (P) ou Tesoura (S)" />
             </div>
         </div>
         <br />
@@ -33,8 +33,15 @@
         </div>
     </form><br />
     <div class="row">
-        <p>E o ganhador é:&nbsp;</p> <span id="idGanhador"></span>
+        <p>E o ganhador é:&nbsp;</p><p id="idGanhador"><strong>Tcham tcham tcham</strong></p>
     </div>
+    <div class="form-row">
+        <span>Erro de estratégia:&nbsp;</span><input  type="number" value="0" id="idErroEstrategia" class="form-control" readonly />
+    </div>
+    <div class="form-row">
+        <span>Erro de número de jogadores:&nbsp;</span><input  type="number" value="0" id="idErroJogadores" class="form-control" readonly />
+    </div>
+
     @section MeusCodigosJavaScript{
         <script type="text/javascript">
 
@@ -44,10 +51,49 @@
                     return false;
                 });
 
+                $('.SomenteLetras').keyup(function () { this.value = this.value.replace(/[^a-zA-Z.]/g, ''); });
             });
 
-            $('.SomenteLetras').keyup(function () { this.value = this.value.replace(/[^a-zA-Z.]/g, ''); });
+            function rps_game_winner() {
 
+                var arrJogadas = [];
+
+                var arrJogador1 = {
+                    Nome: $('#idJogador1').val(),
+                    Sinal: $('#idMovimento1').val()
+                };
+
+                var arrJogador2 = {
+                    Nome: $('#idJogador2').val(),
+                    Sinal: $('#idMovimento2').val()
+                };
+
+                arrJogadas.push(arrJogador1);
+                arrJogadas.push(arrJogador2);
+
+                var vErroEstrategia;
+                var vErroNumJogadores;
+
+                vErroEstrategia = $('#idErroEstrategia').val();
+                vErroNumJogadores = $('#idErroJogadores').val();
+
+                var parametrosAjax = { Jogadas: JSON.stringify(arrJogadas), N1: vErroNumJogadores, N2: vErroEstrategia }
+
+                console.log(JSON.stringify(arrJogadas));
+
+                Util.goAjax("POST", Util.preparaURLController("ExecutaJogo", "Jogo"), "$('#hj')", JSON.stringify(parametrosAjax), function (retorno, param) {
+                    if (retorno.NomeVencedor != "") {
+                        $('#idGanhador').html("");
+                        $('#idGanhador').html(retorno.NomeVencedor + " - " + retorno.SinalVencedor);
+                    }
+                    else
+                    {  $('#idGanhador').html("");
+                    }
+                    0
+                    $('#idErroJogadores').val(retorno.WrongNumberOfPlayersError);
+                    $('#idErroEstrategia').val(retorno.NoSuchStrategyError);
+                });
+                }
         </script>
     }
 </div>

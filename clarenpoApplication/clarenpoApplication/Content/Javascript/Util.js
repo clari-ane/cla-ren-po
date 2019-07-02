@@ -1,6 +1,5 @@
 ﻿function Util() { };
 
-
 //#region Requisição Assíncrona
 Util.goAjax = function (metodo, src, load, param, ok) {
     var options = {
@@ -33,7 +32,7 @@ Util.preparaURLController = function (metodo, controller) {
     var server = location.hostname;
     var port = document.location.port;
     var url;
-    url = protocolo + "//" + server + vBase + "" + controller + "/" + metodo;
+    url = protocolo + "//" + server + ":" + port + vBase + "" + controller + "/" + metodo;
 
     console.log("Caminho Completo:" + url);
 

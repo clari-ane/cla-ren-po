@@ -123,7 +123,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DTOs\dtoJogador.cs" />
+    <Compile Include="Models\BLLs\Jogo.cs" />
+    <Compile Include="Models\DTOs\Jogada.cs" />
+    <Compile Include="Models\DTOs\Retorno.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -155,7 +157,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Img\" />
-    <Folder Include="Models\BLLs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

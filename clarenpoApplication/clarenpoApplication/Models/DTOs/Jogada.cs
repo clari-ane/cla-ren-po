@@ -5,8 +5,9 @@ using System.Web;
 
 namespace clarenpoApplication.Models.DTOs
 {
-    public class dtoJogador
+    public class Jogada
     {
-
+        public string Nome { get; set; }
+        public string Sinal { get; set; }
     }
 }
